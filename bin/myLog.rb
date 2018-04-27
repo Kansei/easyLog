@@ -6,14 +6,19 @@ file_name = logs_path + "/" + date + ".txt"
 
 exit_word = ['quit', 'q', 'exit']
 
-puts '======== start log ======='
+puts '==========================='
+puts '        start log          '
+puts '==========================='
 
 File.open(file_name, "a+") do |f|
   while true do
+    print ">>"
     log = gets.chomp
 
     if exit_word.include?(log) then
-      puts '======== finish log ======='
+      puts '==========================='
+      puts '        finish log         '
+      puts '==========================='
       break;
     elsif log == ""
     else
