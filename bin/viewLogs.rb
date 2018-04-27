@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 exit_word = ['quit', 'q', 'exit']
-except_word = [".",".."]
+except_word = [".","..",".gitkeep"]
 
 puts "========== Your logs ========="
 
