@@ -15,18 +15,18 @@ Dir.open(logs_path) do |dir|
       puts f
     end
   end
-  
+
   if count == 3
     puts " Your log does not exist yet. "
     puts "=============================="
     exit
   end
 end
+
 puts "=============================="
-
-
 puts "choose a log to view!"
 print ">>"
+
 log_name = gets.chomp
 
 view_log = logs_path+"/"+log_name
