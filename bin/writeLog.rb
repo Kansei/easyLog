@@ -1,29 +1,48 @@
-#!/usr/bin/env ruby
+def puts_start
+  puts '==========================='
+  puts '        start log          '
+  puts '==========================='
+end
 
-date = Time.now.strftime("%Y_%m_%d")
-logs_path = File.expand_path("../../mylogs",__FILE__)
-file_name = logs_path + "/" + date + ".txt"
+def puts_finish
+  puts '==========================='
+  puts '        finish log         '
+  puts '==========================='
+end
 
-exit_word = ['quit', 'q', 'exit']
+def create_filename
+  date = Time.now.strftime("%Y_%m_%d")
+  logs_path = File.expand_path("../../mylogs",__FILE__)
+  file_name = logs_path + "/" + date + ".txt"
+  return file_name
+end
 
-puts '==========================='
-puts '        start log          '
-puts '==========================='
+def write_log
 
-File.open(file_name, "a+") do |f|
-  while true do
-    print ">>"
-    log = gets.chomp
+  filename = create_filename
 
-    if exit_word.include?(log) then
-      puts '==========================='
-      puts '        finish log         '
-      puts '==========================='
-      break;
-    elsif log == ""
-    else
-      time = "["+Time.now.strftime("%Y:%m:%d:%H:%M")+"] "
-      f.puts time+log
+  # 終了コマンド
+  exit_word = ['quit', 'q', 'exit']
+
+  puts_start
+
+  File.open(filename, "a") do |f|
+    while true do
+      # 改行を取り除いたキーボード入力
+      print ">>"
+      log = STDIN.gets.chomp
+
+      # 終了コマンドが入力されたか確認
+      if exit_word.include?(log) then
+        puts_finish
+        break;
+      elsif log == ""
+        # 何も打ち込まれなかった場合はファイルに書き込まない
+      else
+        # ログを打った時間を取得しlogと一緒にファイルに書き込む
+        time = "["+Time.now.strftime("%Y:%m:%d:%H:%M")+"] "
+        f.puts time+log
+      end
     end
   end
 end
