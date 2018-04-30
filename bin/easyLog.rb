@@ -20,9 +20,10 @@ case com
 when "w"
   write_log
 when "v"
-  view_log
+  view_today_log
+when "l"
+  list_log
 else
-  STDERR.print "command not found\n"
-  STDERR.print "only 'w' or 'v'\n"
-  exit
+  STDERR.puts "command not found"
+  STDERR.puts "only 'w' or 'v', 'l'"
 end

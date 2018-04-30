@@ -52,12 +52,23 @@ def choose_log(path)
   end
 end
 
-def view_log
+def list_log
   logs_path = File.expand_path("../../mylogs",__FILE__)
 
   # ログファイルの一覧表示
   print_logfile(logs_path)
   # 開くログファイルの選択
   choose_log(logs_path)
+end
 
+def view_today_log
+  date = Time.now.strftime("%Y_%m_%d")
+  logs_path = File.expand_path("../../mylogs",__FILE__)
+  today_log = logs_path+"/"+date+".txt"
+
+  if File.exist?(today_log)
+    system('open '+ today_log)
+  else
+    STDERR.puts "Today's log does not exist yet."
+  end
 end
