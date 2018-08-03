@@ -18,7 +18,7 @@ end
 def read_setfile
   setfile_path = (File.join(File.dirname(__FILE__), '/../.set'))
   setting_log = File.open(setfile_path, "r") do |file|
-    file.read
+    file.read.chomp
   end
 end
 
@@ -39,7 +39,7 @@ def main(argv)
   when "c"
     create_log(log_name)
   when "l"
-    list_log
+    list_log(setting_log)
   else
     STDERR.puts "command not found"
     STDERR.puts "only w/v/l/s/d/c"
@@ -48,3 +48,4 @@ end
 
 check_argv
 main(ARGV)
+
