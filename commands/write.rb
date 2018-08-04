@@ -10,23 +10,20 @@ def puts_finish
   puts '==========================='
 end
 
-def create_filename
-  date = Time.now.strftime("%Y_%m_%d")
-  logs_path = File.expand_path("../../mylogs",__FILE__)
-  file_name = logs_path + "/" + date + ".txt"
-  return file_name
-end
+def write_log(setting_log)
 
-def write_log
+  write_log_path = File.expand_path("../../logs/#{setting_log}.txt",__FILE__)
 
-  filename = create_filename
+  unless File.exist?(write_log_path)
+    exit
+  end
 
   # 終了コマンド
   exit_word = ['quit', 'q', 'exit']
 
   puts_start
 
-  File.open(filename, "a") do |f|
+  File.open(write_log_path, "a") do |f|
     while true do
       # 改行を取り除いたキーボード入力
       print ">>"
