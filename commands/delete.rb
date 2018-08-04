@@ -6,7 +6,8 @@ def delete_log(log_name, setting_log)
     puts "can not delete"
   elsif File.exist?(delete_log_path)
     puts "Are yo sure? [y/n]"
-    if gets.chomp == "y"
+    answer = STDIN.gets.chomp
+    if answer == "y"
       File.delete(delete_log_path)
       puts "deleted: #{log_name} log"
     else
