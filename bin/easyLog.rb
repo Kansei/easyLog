@@ -35,7 +35,7 @@ def main(argv)
   when "s"
     swittch_log(log_name)
   when "d"
-    delete_log(log_name)
+    delete_log(log_name, setting_log)
   when "c"
     create_log(log_name)
   when "l"
