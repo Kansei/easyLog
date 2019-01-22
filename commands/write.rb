@@ -1,13 +1,9 @@
-def puts_start
-  puts '==========================='
-  puts '        start log          '
-  puts '==========================='
+def puts_start(log_name)
+  puts "==============  #{log_name} log  =============="
 end
 
 def puts_finish
-  puts '==========================='
-  puts '        finish log         '
-  puts '==========================='
+  puts '==============  finish log  =============='
 end
 
 def write_log(setting_log)
@@ -21,7 +17,7 @@ def write_log(setting_log)
   # 終了コマンド
   exit_word = ['quit', 'q', 'exit']
 
-  puts_start
+  puts_start(setting_log)
 
   File.open(write_log_path, "a") do |f|
     while true do
